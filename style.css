@@ -3,6 +3,7 @@
     padding: 0;
     font-family: "Arial" , Georgia;
     box-sizing: border-box;
+    cursor: none;
 }
 
 body {
@@ -15,12 +16,25 @@ body {
     background: #081b29;
 }
 
+
 body, h1, h2, p, footer {
     color: white;
 }
 
 header, nav, main, footer {
+    cursor: none;
     padding: 20px;
+    transition: opacity 0.5s ease; /* Transisi opasitas selama 0.5 detik dengan efek easing */
+}
+
+/* Transisi halaman */
+.page-transition {
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+.page-transition.fade-out {
+    opacity: 0;
 }
 
 /* Mengatur navigasi di sebelah kanan */
@@ -49,6 +63,9 @@ nav ul li {
 nav ul li a {
     text-decoration: none;
     color: white;
+    transition: color 0.3s ease; /* Efek transisi untuk perubahan warna */
+    font-weight: bold; /* Menjadikan teks tebal */
+    margin-left: 2rem;
 }
 nav ul li a:hover {
     color: blue;
@@ -108,6 +125,68 @@ aside {
     left: 30%;
     transform: translate(-50%, -50%);
     text-align: left;
+    line-height: 1.3;
+}
+
+#home h2 {
+    font-size: 36px; /* Ukuran font yang lebih besar */
+    margin-bottom: 15px; /* Atur jarak antara kalimat */
+}
+
+#home h2 span {
+    color: white; /* Warna teks putih untuk "Hi, I'm" */
+}
+
+#home h2 strong {
+    color: #00abf0; /* Warna teks biru untuk "Brando Mathias" */
+}
+
+#home h3,
+
+h3 {
+    position: relative;
+    display: inline-block; /* Menjadikan elemen h3 inline */
+    font-size: 25px; /* Ukuran font yang lebih besar */
+    margin-bottom: 20px; /* Atur jarak antara kalimat */
+    font-weight: bolder;
+}
+
+h3::after {
+    content: '|'; /* Isi pseudo-elemen dengan karakter kursor */
+    position: absolute;
+    top: 0;
+    right: -0.2em; /* Mengatur posisi kursor di sisi kanan tiap huruf */
+    animation: blinkCursor 0.8s infinite; /* Animasi kursor */
+}
+
+@keyframes blinkCursor {
+    0% {
+        opacity: 1; /* Tampilkan kursor */
+    }
+    50% {
+        opacity: 0; /* Sembunyikan kursor */
+    }
+    100% {
+        opacity: 1; /* Tampilkan kursor */
+    }
+}
+
+/* Tambahkan keyframes untuk animasi perubahan warna teks */
+@keyframes colorChange {
+    0% {
+        color: white; /* Warna awal */
+    }
+    50% {
+        color: blue; /* Warna tengah */
+    }
+    100% {
+        color: #00abf0; /* Warna akhir */
+    }
+}
+
+
+#home p {
+    margin-bottom: 20px; /* Atur jarak antar paragraf */
 }
 
 footer {
@@ -239,3 +318,34 @@ article img:hover {
     animation: pulse 2s infinite; /* Menambahkan animasi pulse */
 }
 
+/* Animasi kursor */
+#cursor {
+    z-index: 999;
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    background: #2696e8;
+    border-radius: 50%; /* Membuatnya menjadi lingkaran */
+    mix-blend-mode: difference; /* Mode campuran untuk efek transparansi */
+    pointer-events: none;
+    box-shadow: 0 0 10px #2696e8, /* warna merah */
+                0 0 20px #2696e8, /* warna merah */
+                0 0 30px #2696e8; /* warna merah */
+    display: none;
+    animation: colors 5s infinite;
+    transform: translate(-50%, -50%); /* Pusatkan elemen pada kursor */
+}
+
+/* Efek ketika cursor dihover */
+#cursor:hover {
+    transform: scale(1.5); /* Perbesar elemen saat dihover */
+}
+
+@keyframes colors {
+    0% {
+        filter: hue-rotate(0deg);
+    }
+    100% {
+        filter: hue-rotate(360deg);
+    }
+}
