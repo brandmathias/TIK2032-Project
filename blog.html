@@ -4,10 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog</title>
+    <script src="ajax.js"></script>
     <link rel="stylesheet" href="style.css">
     
 </head>
+<body class="page-transition"></body>
 <body>
+    <div id="cursor"></div>
     <header>
         <h1>Blog</h1>
         <nav>
@@ -65,7 +68,20 @@
                 Melalui Tari Maengket, masyarakat menjaga dan memperkuat warisan budaya mereka serta memperkenalkan keindahan dan keunikan budaya Sulawesi Utara kepada dunia.
             </p>
         </article>
+
+        <script>
+            // Memuat konten utama menggunakan AJAX saat halaman dimuat
+            document.addEventListener('DOMContentLoaded', function() {
+                loadContent('blog-content.html', function(response) {
+                    document.getElementById('main-content').innerHTML = response;
+                });
+            });
+        </script>
+
     </main>
+
+    <script src="main.js"></script>
+
 
 </body>
 </html>
